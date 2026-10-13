@@ -11,6 +11,7 @@ export default defineConfig({
         services: resolve(process.cwd(), 'services.html'),
         projects: resolve(process.cwd(), 'projects.html'),
         about: resolve(process.cwd(), 'about.html'),
+        experience: resolve(process.cwd(), 'experience.html'),
         contact: resolve(process.cwd(), 'contact.html'),
       },
     },

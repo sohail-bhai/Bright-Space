@@ -47,6 +47,7 @@ const navItems = [
   { label: 'Services', href: '/services.html' },
   { label: 'Projects', href: '/projects.html' },
   { label: 'About', href: '/about.html' },
+  { label: 'Experience', href: '/experience.html' },
   { label: 'Contact', href: '/contact.html' },
 ];
 
@@ -312,6 +313,7 @@ function AboutPreview() {
           <h2>Designed around real <em>everyday life.</em></h2>
           <p>Good interiors balance the way a room looks with the way it works. We bring layout, materials and practical details together around your needs.</p>
           <a className="text-link text-link--dark" href="/about.html">Meet Bright Space <ArrowRight size={16} /></a>
+          <div className="about-preview__experience"><strong>17 years</strong><span>in modular interior design</span><a href="/experience.html">Explore our experience <ArrowRight size={15} /></a></div>
         </div>
         <figure className="about-preview__image"><img src="/images/living-warm.webp" alt="A warm living space with considered lighting and timber detailing" loading="lazy" /><figcaption>DESIGN · DETAIL · DELIVER</figcaption></figure>
       </div>
@@ -368,6 +370,65 @@ function ServicePlanning() {
         <a className="button button--dark" href="/contact.html">Tell us about your space <ArrowUpRight size={15} /></a>
       </div>
     </section>
+  );
+}
+
+function Experience() {
+  const focusAreas = [
+    { number: '01', title: 'Layout before finishes', text: 'Begin with measurements, movement and clearances, then shape a layout that feels natural to use.' },
+    { number: '02', title: 'Storage with a purpose', text: 'Plan drawers, shelves and hanging space around what belongs in the room and how you reach it.' },
+    { number: '03', title: 'Materials that fit', text: 'Choose colours, textures and surfaces in the context of the room and the way it is used.' },
+  ];
+  const steps = [
+    { number: '01', title: 'Understand the space', text: 'Talk through your routines, priorities, measurements and what you want to improve.' },
+    { number: '02', title: 'Plan the modules', text: 'Bring the layout, storage and proportions together around the room.' },
+    { number: '03', title: 'Resolve the details', text: 'Review finishes, fittings and the details that make the design feel complete.' },
+    { number: '04', title: 'Coordinate the fit', text: 'Carry the agreed design through execution and installation.' },
+  ];
+  return (
+    <>
+      <PageIntro
+        className="page-intro--experience"
+        eyebrow="17 years in modular interior design"
+        title="Experience that makes every"
+        emphasis="detail count."
+        description="Seventeen years in modular interior design have shaped a practical way of thinking about layout, storage and the details people use every day."
+        image="/images/kitchen-sage.webp"
+      />
+      <section className="experience-detail section-pad">
+        <div className="container">
+          <div className="experience-detail__heading">
+            <SectionLabel>Experience, applied</SectionLabel>
+            <h2>Good modular design starts with <em>how you live.</em></h2>
+            <p>A cabinet is part of a room, but it is also part of a routine. We look at the space, what needs to be stored and how each area will be used before settling on the design.</p>
+          </div>
+          <div className="experience-focus-grid">
+            {focusAreas.map((item) => (
+              <article className="experience-focus" key={item.number}>
+                <span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="experience-method section-pad">
+        <div className="container experience-method__grid">
+          <div className="experience-method__intro">
+            <SectionLabel dark>From first conversation to final fit</SectionLabel>
+            <h2>Thoughtful at every <em>stage.</em></h2>
+            <p>Experience helps connect the early ideas to the finished details. Each step gives the next one a clearer foundation.</p>
+            <a className="button button--light" href="/contact.html">Plan your space <ArrowUpRight size={15} /></a>
+          </div>
+          <div className="experience-method__steps">
+            {steps.map((step) => (
+              <article className="experience-method__step" key={step.number}>
+                <span>{step.number}</span><div><h3>{step.title}</h3><p>{step.text}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -459,6 +520,7 @@ function ContactTeaser({ variant = 'home' }) {
     services: { eyebrow: 'Planning an interior project?', heading: <>Let’s find the right <em>service for you.</em></>, text: 'Share what you need help with and we can start with a conversation.', action: 'Discuss your project' },
     projects: { eyebrow: 'Inspired by these spaces?', heading: <>Let’s talk about <em>your project.</em></>, text: 'Tell us what you’re planning and what matters most in your space.', action: 'Start an enquiry' },
     about: { eyebrow: 'A thoughtful space starts with a conversation', heading: <>Tell us about the space you’d like to <em>make your own.</em></>, text: 'Share your ideas, priorities and questions with Bright Space Interiors.', action: 'Get in touch' },
+    experience: { eyebrow: '17 years in modular interior design', heading: <>Let’s shape a space that works for <em>your everyday.</em></>, text: 'Tell us about your room, your routines and what you would like to change.', action: 'Discuss your space' },
   }[variant];
   return (
     <section className="contact-teaser">
@@ -645,6 +707,7 @@ export default function App() {
     services: 'Interior Design Services | Bright Space Interiors',
     projects: 'Interior Design Projects | Bright Space Interiors',
     about: 'About Bright Space Interiors | Design · Detail · Deliver',
+    experience: '17 Years of Modular Interior Design | Bright Space Interiors',
     contact: 'Contact Bright Space Interiors | Hyderabad',
   };
   useEffect(() => { document.title = pageTitles[page] || pageTitles.home; }, [page]);
@@ -656,6 +719,8 @@ export default function App() {
     content = <><Portfolio onOpen={(project) => { lightboxTriggerRef.current = document.activeElement; setActiveProject(project); }} standalone /><ContactTeaser variant="projects" /></>;
   } else if (page === 'about') {
     content = <><About pageHeading /><PromiseStrip /><Process /><ContactTeaser variant="about" /></>;
+  } else if (page === 'experience') {
+    content = <><Experience /><ContactTeaser variant="experience" /></>;
   } else if (page === 'contact') {
     content = <Contact />;
   } else {

@@ -525,7 +525,7 @@ function ContactTeaser({ variant = 'home' }) {
   return (
     <section className="contact-teaser">
       <div className="container contact-teaser__inner">
-        <div><SectionLabel dark>{copy.eyebrow}</SectionLabel><h2>{copy.heading}</h2><p>{copy.text}</p></div>
+        <div className="contact-teaser__copy"><SectionLabel dark>{copy.eyebrow}</SectionLabel><h2>{copy.heading}</h2><p>{copy.text}</p></div>
         <a className="button button--light" href="/contact.html">{copy.action} <ArrowUpRight size={16} /></a>
       </div>
     </section>
@@ -646,7 +646,7 @@ function Footer() {
         <div className="site-footer__main">
           <div className="site-footer__brand-col"><Logo footer /><p>Thoughtful interiors, considered details, spaces designed around you.</p><a href="/contact.html" className="footer-cta">Start a project <ArrowUpRight size={15} /></a></div>
           <div className="site-footer__nav-col"><span className="footer-heading">EXPLORE</span><div className="footer-links">{navItems.map((item) => <a href={item.href} key={item.href}>{item.label}<ArrowUpRight size={13} /></a>)}</div></div>
-          <div className="site-footer__contact-col"><span className="footer-heading">CONTACT</span><span>Phone · {business.phoneDisplay}</span><a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">WhatsApp us <ArrowUpRight size={13} /></a><a href={gmailComposeUrl} target="_blank" rel="noopener noreferrer">{business.email}</a><a href={googleMapsDirectionsUrl} target="_blank" rel="noopener noreferrer">Get directions <ArrowUpRight size={13} /></a><span>{business.locationLabel}</span></div>
+          <div className="site-footer__contact-col"><span className="footer-heading">CONTACT</span><a href={`tel:+${business.phoneDigits}`}>Phone · {business.phoneDisplay}</a><a href={whatsappUrl()} target="_blank" rel="noopener noreferrer">WhatsApp us <ArrowUpRight size={13} /></a><a href={gmailComposeUrl} target="_blank" rel="noopener noreferrer">{business.email}</a><a href={googleMapsDirectionsUrl} target="_blank" rel="noopener noreferrer">Get directions <ArrowUpRight size={13} /></a><span>{business.locationLabel}</span></div>
           <div className="site-footer__signature"><span>DESIGN</span><i /><span>DETAIL</span><i /><span>DELIVER</span></div>
         </div>
         <div className="site-footer__bottom"><span>© {new Date().getFullYear()} Bright Space Interiors. All rights reserved.</span><a href="/">Back to home ↑</a><span>Made with intention.</span></div>
@@ -714,7 +714,7 @@ export default function App() {
 
   let content;
   if (page === 'services') {
-    content = <><PageIntro className="page-intro--services" eyebrow="Our services" title="Thoughtful spaces," emphasis="beautifully realised." description="From complete home interiors to a single room, find the support your project needs." image="/images/kitchen-minimal.webp" /><Services page /><ServicePlanning /><ContactTeaser variant="services" /></>;
+    content = <><PageIntro className="page-intro--services" eyebrow="Our services" title="Spaces designed around" emphasis="your everyday." description="Explore whole-home interiors, modular kitchens, furniture and commercial spaces. Each service starts with how you use a room and what you need it to do." image="/images/kitchen-minimal.webp" /><Services page /><ServicePlanning /><ContactTeaser variant="services" /></>;
   } else if (page === 'projects') {
     content = <><Portfolio onOpen={(project) => { lightboxTriggerRef.current = document.activeElement; setActiveProject(project); }} standalone /><ContactTeaser variant="projects" /></>;
   } else if (page === 'about') {

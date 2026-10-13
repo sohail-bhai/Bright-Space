@@ -9,7 +9,7 @@ export const business = {
   website: 'brightspaceinterior.com',
   mapsUrl: 'https://maps.app.goo.gl/5Ck9ZQVQVddvXFhf7',
   address: 'H. No. 5-16/9/2/A/2H, Baidurgam, Hyderabad, Telangana – 500 008, India',
-  locationLabel: 'Hyderabad, Telangana',
+  locationLabel: 'Hyderabad, Telangana, India',
 };
 
 export const services = [
